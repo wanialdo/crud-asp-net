@@ -53,12 +53,22 @@
     <Compile Include="DbContext\OnSystDbContext.cs" />
     <Compile Include="Fornecedor.cs" />
     <Compile Include="ItemProposta.cs" />
+    <Compile Include="Migrations\201904272253341_InitialCreate.cs" />
+    <Compile Include="Migrations\201904272253341_InitialCreate.Designer.cs">
+      <DependentUpon>201904272253341_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proposta.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904272253341_InitialCreate.resx">
+      <DependentUpon>201904272253341_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,13 +13,13 @@ namespace Entidade
         [Column("contato_fornecedor_id")]
         public int ID { get; set; }
 
-        [Column("contato_fornecedor_id")]
+        [Column("nome")]
         public string Nome { get; set; }
 
-        [Column("contato_fornecedor_id")]
+        [Column("telefone")]
         public string Telefone { get; set; }
 
-        [Column("contato_fornecedor_id")]
+        [Column("fornecedor_id")]
         public int FornecedorID { get; set; }
         public Fornecedor Fornecedor { get; set; }
     }

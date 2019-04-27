@@ -12,7 +12,7 @@ namespace Entidade
     {
         [Key]
         [Column("cliente_id")]
-        public int ID;
+        public int ID { get; set; }
 
         [Column("nome")]
         public string Nome { get; set; }
