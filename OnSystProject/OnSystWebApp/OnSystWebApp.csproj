@@ -173,7 +173,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AdminLteController.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
+    <Compile Include="Controllers\ContatosFornecedorController.cs" />
+    <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItensPropostaController.cs" />
+    <Compile Include="Controllers\PropostasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -928,6 +933,31 @@
     <Content Include="Views\Shared\_AdminLteBreadcrumb.cshtml" />
     <Content Include="Views\AdminLte\Index.cshtml" />
     <Content Include="Views\AdminLte\Colors.cshtml" />
+    <Content Include="Views\Clientes\Create.cshtml" />
+    <Content Include="Views\Clientes\Delete.cshtml" />
+    <Content Include="Views\Clientes\Details.cshtml" />
+    <Content Include="Views\Clientes\Edit.cshtml" />
+    <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\ContatosFornecedor\Create.cshtml" />
+    <Content Include="Views\ContatosFornecedor\Delete.cshtml" />
+    <Content Include="Views\ContatosFornecedor\Details.cshtml" />
+    <Content Include="Views\ContatosFornecedor\Edit.cshtml" />
+    <Content Include="Views\ContatosFornecedor\Index.cshtml" />
+    <Content Include="Views\Fornecedores\Create.cshtml" />
+    <Content Include="Views\Fornecedores\Delete.cshtml" />
+    <Content Include="Views\Fornecedores\Details.cshtml" />
+    <Content Include="Views\Fornecedores\Edit.cshtml" />
+    <Content Include="Views\Fornecedores\Index.cshtml" />
+    <Content Include="Views\ItensProposta\Create.cshtml" />
+    <Content Include="Views\ItensProposta\Delete.cshtml" />
+    <Content Include="Views\ItensProposta\Details.cshtml" />
+    <Content Include="Views\ItensProposta\Edit.cshtml" />
+    <Content Include="Views\ItensProposta\Index.cshtml" />
+    <Content Include="Views\Propostas\Create.cshtml" />
+    <Content Include="Views\Propostas\Delete.cshtml" />
+    <Content Include="Views\Propostas\Details.cshtml" />
+    <Content Include="Views\Propostas\Edit.cshtml" />
+    <Content Include="Views\Propostas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
