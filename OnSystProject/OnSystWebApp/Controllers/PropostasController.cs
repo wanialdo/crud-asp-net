@@ -59,7 +59,6 @@ namespace OnSystWebApp.Controllers
                                                 DateTime.Now.Day.ToString().PadLeft(2,'0'));
 
                 Proposta ultimoId = db.Propostas
-                    .Where(x => x.FornecedorID == proposta.FornecedorID)
                     .Where(x => x.ClienteID == proposta.ClienteID)
                     .Where(x => x.Numero.ToString().StartsWith(serial))
                     .OrderByDescending(x => x.ID).FirstOrDefault();
@@ -67,7 +66,7 @@ namespace OnSystWebApp.Controllers
                 var contador = "01";
                 if (ultimoId != null && ultimoId.ID != 0)
                 {
-                    int ultimovalor = Convert.ToInt32(ultimoId.ID.ToString().Substring(8)) + 1;
+                    int ultimovalor = Convert.ToInt32(ultimoId.Numero.ToString().Substring(8)) + 1;
                     contador = ultimovalor.ToString().PadLeft(2, '0');
                 }
 

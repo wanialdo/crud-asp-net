@@ -176,6 +176,7 @@
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\ContatosFornecedorController.cs" />
     <Compile Include="Controllers\Error404Controller.cs" />
+    <Compile Include="Controllers\ErrorGeneralController.cs" />
     <Compile Include="Controllers\FornecedoresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItensPropostaController.cs" />
@@ -960,6 +961,7 @@
     <Content Include="Views\Propostas\Edit.cshtml" />
     <Content Include="Views\Propostas\Index.cshtml" />
     <Content Include="Views\Error404\Index.cshtml" />
+    <Content Include="Views\ErrorGeneral\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
