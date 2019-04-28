@@ -1,52 +1,57 @@
 ﻿@model IEnumerable<Entidade.Fornecedor>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Consulta de Fornecedores";
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="panel">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                @Html.ActionLink("Cadastrar Novo", "Create", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+        <div class="separator">&nbsp;</div>
+        <table class="table table-condensed table-striped table-responsive">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Telefone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Logradouro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Numero)
+                </th>
+                <th></th>
+            </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Logradouro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Numero)
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Logradouro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Numero)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                        <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Logradouro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Numero)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
-</table>

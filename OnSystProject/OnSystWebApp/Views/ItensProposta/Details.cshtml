@@ -5,7 +5,10 @@
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="panel">
+    <div class="panel-body">
+    </div>
+</div>
 
 <div>
     <h4>ItemProposta</h4>
@@ -47,5 +50,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Edit", "Propostas", new { id = Model.PropostaID }, new { @class = "btn btn-default" })
 </p>

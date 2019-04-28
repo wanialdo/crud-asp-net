@@ -57,6 +57,14 @@
     <Compile Include="Migrations\201904272253341_InitialCreate.Designer.cs">
       <DependentUpon>201904272253341_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904280402111_KeysUpdate.cs" />
+    <Compile Include="Migrations\201904280402111_KeysUpdate.Designer.cs">
+      <DependentUpon>201904280402111_KeysUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904280418131_PropostaUpdate.cs" />
+    <Compile Include="Migrations\201904280418131_PropostaUpdate.Designer.cs">
+      <DependentUpon>201904280418131_PropostaUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proposta.cs" />
@@ -68,6 +76,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201904272253341_InitialCreate.resx">
       <DependentUpon>201904272253341_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904280402111_KeysUpdate.resx">
+      <DependentUpon>201904280402111_KeysUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904280418131_PropostaUpdate.resx">
+      <DependentUpon>201904280418131_PropostaUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

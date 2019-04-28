@@ -52,7 +52,7 @@ namespace OnSystWebApp.Controllers
             {
                 db.Fornecedores.Add(fornecedor);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", new { id = fornecedor.ID });
             }
 
             return View(fornecedor);

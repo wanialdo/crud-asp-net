@@ -1,41 +1,42 @@
 ﻿@model Entidade.Proposta
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Exclusão de Cliente";
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
 
-<h2>Delete</h2>
+<div class="panel">
+    <div class="panel-body">
+        <h3>Tem certeza que deseja excluir esse item?</h3>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cliente.Nome)
+                </dt>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Proposta</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Cliente.Nome)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Cliente.Nome)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cliente.Nome)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Fornecedores.Nome)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fornecedores.Nome)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Fornecedores.Nome)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fornecedores.Nome)
-        </dd>
+            </dl>
 
-    </dl>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <input type="submit" value="Apagar" class="btn btn-danger" />
+                    @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
+                </div>
+            }
         </div>
-    }
+    </div>
 </div>

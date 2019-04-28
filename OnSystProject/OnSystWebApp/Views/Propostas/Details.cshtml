@@ -5,7 +5,10 @@
     Layout = "~/Views/Shared/_AdminLteLayout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="panel">
+    <div class="panel-body">
+    </div>
+</div>
 
 <div>
     <h4>Proposta</h4>
@@ -28,6 +31,13 @@
         </dd>
 
     </dl>
+
+    <div class="panel">
+        <div class="panel-heading">Itens da Proposta</div>
+        <div class="panel-body">
+            @Html.Action("Index", "ItensProposta", new { id = Model.ID })
+        </div>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

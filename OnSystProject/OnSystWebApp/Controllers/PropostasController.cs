@@ -53,9 +53,29 @@ namespace OnSystWebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                string serial = String.Format("{0}{1}{2}",
+                                                DateTime.Now.Year,
+                                                DateTime.Now.Month.ToString().PadLeft(2,'0'),
+                                                DateTime.Now.Day.ToString().PadLeft(2,'0'));
+
+                Proposta ultimoId = db.Propostas
+                    .Where(x => x.FornecedorID == proposta.FornecedorID)
+                    .Where(x => x.ClienteID == proposta.ClienteID)
+                    .Where(x => x.Numero.ToString().StartsWith(serial))
+                    .OrderByDescending(x => x.ID).FirstOrDefault();
+
+                var contador = "01";
+                if (ultimoId != null && ultimoId.ID != 0)
+                {
+                    int ultimovalor = Convert.ToInt32(ultimoId.ID.ToString().Substring(8)) + 1;
+                    contador = ultimovalor.ToString().PadLeft(2, '0');
+                }
+
+                proposta.Numero = Convert.ToInt32(serial + contador);
                 db.Propostas.Add(proposta);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return RedirectToAction("Edit", new { id = proposta.ID });
             }
 
             ViewBag.ClienteID = new SelectList(db.Clientes, "ID", "Nome", proposta.ClienteID);

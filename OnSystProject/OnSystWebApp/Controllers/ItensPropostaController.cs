@@ -15,9 +15,16 @@ namespace OnSystWebApp.Controllers
         private OnSystDbContext db = new OnSystDbContext();
 
         // GET: ItensProposta
-        public ActionResult Index()
+        public ActionResult Index(int id=0)
         {
             var itensPropostas = db.ItensPropostas.Include(i => i.Proposta);
+
+            if (id != 0)
+            {
+                itensPropostas = itensPropostas.Where(x => x.PropostaID == id);
+                ViewBag.IdProposta = id;
+            }
+
             return View(itensPropostas.ToList());
         }
 
@@ -37,9 +44,10 @@ namespace OnSystWebApp.Controllers
         }
 
         // GET: ItensProposta/Create
-        public ActionResult Create()
+        public ActionResult Create(int idProposta)
         {
-            ViewBag.PropostaID = new SelectList(db.Propostas, "ID", "ID");
+            ViewBag.ListaProposta = db.Propostas; // new SelectList(db.Propostas, "ID", "ID");
+            ViewBag.IdProposta = idProposta;
             return View();
         }
 
@@ -54,7 +62,7 @@ namespace OnSystWebApp.Controllers
             {
                 db.ItensPropostas.Add(itemProposta);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "Propostas", new { id = itemProposta.PropostaID });
             }
 
             ViewBag.PropostaID = new SelectList(db.Propostas, "ID", "ID", itemProposta.PropostaID);
@@ -88,7 +96,7 @@ namespace OnSystWebApp.Controllers
             {
                 db.Entry(itemProposta).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "Propostas", new { id = itemProposta.PropostaID });
             }
             ViewBag.PropostaID = new SelectList(db.Propostas, "ID", "ID", itemProposta.PropostaID);
             return View(itemProposta);
@@ -115,9 +123,10 @@ namespace OnSystWebApp.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             ItemProposta itemProposta = db.ItensPropostas.Find(id);
+            var idRetorno = itemProposta.Proposta;
             db.ItensPropostas.Remove(itemProposta);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Edit", "Propostas", new { id = idRetorno });
         }
 
         protected override void Dispose(bool disposing)

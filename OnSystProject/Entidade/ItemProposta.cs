@@ -8,6 +8,7 @@ using System.Web;
 
 namespace Entidade
 {
+    [Table("ItemPropostas")]
     public class ItemProposta
     {
         [Key]
@@ -37,6 +38,8 @@ namespace Entidade
         [DisplayName("Proposta")]
         [Column("proposta_id")]
         public int PropostaID { get; set; }
+
+        [DisplayName("Proposta")]
         public Proposta Proposta { get; set; }
     }
 }

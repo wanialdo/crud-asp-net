@@ -8,6 +8,7 @@ using System.Web;
 
 namespace Entidade
 {
+    [Table("ContatoFornecedors")]
     public class ContatoFornecedor
     {
         [Key]
@@ -26,6 +27,8 @@ namespace Entidade
         [DisplayName("Fornecedor")]
         [Column("fornecedor_id")]
         public int FornecedorID { get; set; }
+
+        [DisplayName("Fornecedor")]
         public Fornecedor Fornecedor { get; set; }
     }
 }

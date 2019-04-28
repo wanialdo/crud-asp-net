@@ -15,9 +15,16 @@ namespace OnSystWebApp.Controllers
         private OnSystDbContext db = new OnSystDbContext();
 
         // GET: ContatosFornecedor
-        public ActionResult Index()
+        public ActionResult Index(int id = 0)
         {
             var contatosFornecedor = db.ContatosFornecedor.Include(c => c.Fornecedor);
+
+            if (id != 0)
+            {
+                contatosFornecedor = contatosFornecedor.Where(x => x.FornecedorID == id);
+                ViewBag.IdFornecedor = id;
+            }
+
             return View(contatosFornecedor.ToList());
         }
 
@@ -37,9 +44,10 @@ namespace OnSystWebApp.Controllers
         }
 
         // GET: ContatosFornecedor/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            ViewBag.FornecedorID = new SelectList(db.Fornecedores, "ID", "Nome");
+            ViewBag.ListaFornecedor = db.Fornecedores;
+            ViewBag.IdFornecedor = id;
             return View();
         }
 
@@ -54,7 +62,7 @@ namespace OnSystWebApp.Controllers
             {
                 db.ContatosFornecedor.Add(contatoFornecedor);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "Fornecedores", new { id = contatoFornecedor.FornecedorID });
             }
 
             ViewBag.FornecedorID = new SelectList(db.Fornecedores, "ID", "Nome", contatoFornecedor.FornecedorID);
@@ -88,7 +96,7 @@ namespace OnSystWebApp.Controllers
             {
                 db.Entry(contatoFornecedor).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "Fornecedores", new { id = contatoFornecedor.FornecedorID });
             }
             ViewBag.FornecedorID = new SelectList(db.Fornecedores, "ID", "Nome", contatoFornecedor.FornecedorID);
             return View(contatoFornecedor);
@@ -115,9 +123,10 @@ namespace OnSystWebApp.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             ContatoFornecedor contatoFornecedor = db.ContatosFornecedor.Find(id);
+            int idRetorno = contatoFornecedor.FornecedorID;
             db.ContatosFornecedor.Remove(contatoFornecedor);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Edit", "Fornecedores", new { id = idRetorno });
         }
 
         protected override void Dispose(bool disposing)
